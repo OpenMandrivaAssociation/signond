@@ -6,6 +6,7 @@
 %define develplugins %mklibname -d signon-plugins-commo
 %define develqt %mklibname -d signon-qt
 %define develd %mklibname -d signond
+%define	debug_package	%nil
 
 Name:		signon
 Version:	8.51
