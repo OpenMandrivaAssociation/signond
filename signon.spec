@@ -158,7 +158,7 @@ Documentation for %{name}.
 %{_libdir}/libsignon-qt.a
 %{_libdir}/pkgconfig/libsignon-qt.pc
 %{_includedir}/signon-qt
-%{qt4dir}/mkspecs/features/*.prf
+#% {qt4dir}/mkspecs/features/*.prf
 
 %files -n %{name}d
 %{_bindir}/signond
