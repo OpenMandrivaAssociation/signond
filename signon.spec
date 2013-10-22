@@ -9,7 +9,7 @@
 %define	debug_package	%nil
 
 Name:		signon
-Version:	8.51
+Version:	8.54
 Release:	1	
 Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials

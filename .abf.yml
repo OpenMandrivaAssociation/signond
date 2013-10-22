@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   signon-8.51.tar.bz2: 5d62d9f2923381baf5cffbd112adf3ae935e6c65
+sources:
+  signon-8.54.tar.bz2: a29a12d6fe3747930e94932f6e1b1339b471d108
