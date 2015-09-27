@@ -20,7 +20,8 @@ Source0:	http://accounts-sso.googlecode.com/files/%{name}-%{version}.tar.bz2
 Patch1:		signon-8.57-no_static.patch
 Patch3:		signon-8.57-fix-qt5-build.patch
 BuildRequires:	qt5-devel
-BuildRequires:	doxygen
+BuildRequires:  qt5-qttools-dbus
+BuildRequires:	doxygento 
 
 %description
 Single Sign-On is a framework for centrally storing authentication credentials
