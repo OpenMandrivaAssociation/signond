@@ -21,7 +21,7 @@ Patch1:		signon-8.57-no_static.patch
 Patch3:		signon-8.57-fix-qt5-build.patch
 BuildRequires:	qt5-devel
 BuildRequires:  qt5-qttools-qtdbus
-BuildRequires:	doxygento 
+BuildRequires:	doxygen
 
 %description
 Single Sign-On is a framework for centrally storing authentication credentials
