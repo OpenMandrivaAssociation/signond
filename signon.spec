@@ -1,7 +1,8 @@
 %define major 1
 %define libextension %mklibname signon-extension %major
-%define libplugins %mklibname signon-plugins-common %major
-%define libqt %mklibname signon-qt %major
+%define libpluginscommon %mklibname signon-plugins-common %major
+%define libplugins %mklibname signon-plugins %major
+%define libqt %mklibname signon-qt5 %major
 %define develextension %mklibname -d signon-extension
 %define develplugins %mklibname -d signon-plugins-commo
 %define develqt %mklibname -d signon-qt
@@ -9,14 +10,16 @@
 %define	debug_package	%nil
 
 Name:		signon
-Version:	8.54
+Version:	8.57
 Release:	1	
 Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 License:	LGPLv2
-URL:		http://code.google.com/p/accounts-sso/
+URL:		http://gitlab.com/accounts-sso/
 Source0:	http://accounts-sso.googlecode.com/files/%{name}-%{version}.tar.bz2
-BuildRequires:	qt4-devel
+Patch1:		signon-8.57-no_static.patch
+Patch3:		signon-8.57-fix-qt5-build.patch
+BuildRequires:	qt5-devel
 BuildRequires:	doxygen
 
 %description
@@ -31,6 +34,17 @@ Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 
 %description -n %{libextension}
+Single Sign-On is a framework for centrally storing authentication credentials
+and handling authentication on behalf of applications as requested by
+applications. It consists of a secure storage of login credentials (for example
+usernames and passwords), plugins for different authentication systems and a
+client library for applications to communicate with this system.
+
+%package -n %{libpluginscommon}
+Group: System/Libraries
+Summary: A framework for centrally storing authentication credentials
+
+%description -n %{libpluginscommon}
 Single Sign-On is a framework for centrally storing authentication credentials
 and handling authentication on behalf of applications as requested by
 applications. It consists of a secure storage of login credentials (for example
@@ -72,6 +86,7 @@ developing applications that use %{name}.
 Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libplugins} = %{version}-%{release}
+Requires:	%{libpluginscommon} = %{version}-%{release}
 
 %description -n %{develplugins}
 The %{name}-devel package contains libraries and header files for
@@ -115,9 +130,10 @@ Documentation for %{name}.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
-%qmake_qt4
+%qmake_qt5
 %make
 
 %install
@@ -139,27 +155,31 @@ Documentation for %{name}.
 %{_libdir}/pkgconfig/SignOnExtension.pc
 %{_includedir}/signon-extension
 
-%files -n %{libplugins}
+%files -n %{libpluginscommon}
 %{_libdir}/libsignon-plugins-common.so.%{major}
 %{_libdir}/libsignon-plugins-common.so.%{major}.*
 
+%files -n %{libplugins}
+%{_libdir}/libsignon-plugins.so.%{major}
+%{_libdir}/libsignon-plugins.so.%{major}.*
+
 %files -n %{develplugins}
 %{_libdir}/libsignon-plugins-common.so
-%{_libdir}/libsignon-plugins.a
+%{_libdir}/libsignon-plugins.so
 %{_libdir}/pkgconfig/signon-plugins-common.pc
 %{_libdir}/pkgconfig/signon-plugins.pc
 %{_includedir}/signon-plugins
 
 %files -n %{libqt}
-%{_libdir}/libsignon-qt.so.%{major}
-%{_libdir}/libsignon-qt.so.%{major}.*
+%{_libdir}/libsignon-qt5.so.%{major}
+%{_libdir}/libsignon-qt5.so.%{major}.*
 
 %files -n %{develqt}
-%{_libdir}/libsignon-qt.so
-%{_libdir}/libsignon-qt.a
-%{_libdir}/pkgconfig/libsignon-qt.pc
-%{_includedir}/signon-qt
+%{_libdir}/libsignon-qt5.so
+%{_libdir}/pkgconfig/libsignon-qt5.pc
+%{_includedir}/signon-qt5
 #% {qt4dir}/mkspecs/features/*.prf
+%{_libdir}/cmake/SignOnQt5
 
 %files -n %{name}d
 %{_bindir}/signond
