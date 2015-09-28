@@ -28,7 +28,7 @@ BuildRequires:  qt5-linguist
 BuildRequires:  qt5-linguist-tools
 BuildRequires:	qtchooser
 BuildRequires:  qt4-qtchooser
-BuildRequires:	doxygento 
+BuildRequires:	doxygen
 
 %description
 Single Sign-On is a framework for centrally storing authentication credentials
