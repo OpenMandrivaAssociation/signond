@@ -138,7 +138,7 @@ Documentation for %{name}.
 %prep
 %setup -q
 %apply_patches
-sed -i 's/qdbuscpp2xml/qdbuscpp2xml-qt5/' src/signond/signond.pro
+sed -i 's/qdbusxml2cpp/qdbusxml2cpp-qt5/' src/signond/signond.pro
 
 %build
 %qmake_qt5
