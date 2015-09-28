@@ -26,6 +26,7 @@ BuildRequires:  qt5-assistant
 BuildRequires:  qt5-designer
 BuildRequires:  qt5-linguist
 BuildRequires:  qt5-linguist-tools
+BuildRequires:  cmake(Qt5Test)
 BuildRequires:	qtchooser
 BuildRequires:	doxygen
 
