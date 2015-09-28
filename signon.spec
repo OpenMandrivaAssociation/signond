@@ -27,7 +27,6 @@ BuildRequires:  qt5-designer
 BuildRequires:  qt5-linguist
 BuildRequires:  qt5-linguist-tools
 BuildRequires:	qtchooser
-BuildRequires:  qt4-qtchooser
 BuildRequires:	doxygen
 
 %description
@@ -139,6 +138,7 @@ Documentation for %{name}.
 %prep
 %setup -q
 %apply_patches
+sed -i 's/qdbuscpp2xml/qdbuscpp2xml-qt5/' src/signond/signond.pro
 
 %build
 %qmake_qt5
