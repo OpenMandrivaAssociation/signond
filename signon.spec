@@ -4,14 +4,14 @@
 %define libplugins %mklibname signon-plugins %major
 %define libqt %mklibname signon-qt5 %major
 %define develextension %mklibname -d signon-extension
-%define develplugins %mklibname -d signon-plugins-commo
+%define develplugins %mklibname -d signon-plugins-common
 %define develqt %mklibname -d signon-qt
 %define develd %mklibname -d signond
 %define	debug_package	%nil
 
 Name:		signon
 Version:	8.57
-Release:	1	
+Release:	2
 Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 License:	LGPLv2
@@ -95,6 +95,7 @@ Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libplugins} = %{version}-%{release}
 Requires:	%{libpluginscommon} = %{version}-%{release}
+Obsoletes:	%{mklibname -d signon-plugins-commo}
 
 %description -n %{develplugins}
 The %{name}-devel package contains libraries and header files for
