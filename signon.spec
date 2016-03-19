@@ -11,7 +11,7 @@
 
 Name:		signon
 Version:	8.57
-Release:	3
+Release:	4
 Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 License:	LGPLv2
