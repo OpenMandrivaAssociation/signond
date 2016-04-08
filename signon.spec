@@ -7,18 +7,17 @@
 %define develplugins %mklibname -d signon-plugins-common
 %define develqt %mklibname -d signon-qt
 %define develd %mklibname -d signond
-%define	debug_package	%nil
+%define date 16.04.20151106
 
 Name:		signon
-Version:	8.57
-Release:	5
+Version:	8.58
+Release:	1
 Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 License:	LGPLv2
 URL:		http://gitlab.com/accounts-sso/
-Source0:	http://accounts-sso.googlecode.com/files/%{name}-%{version}.tar.bz2
+Source0:	https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{version}+%{date}.orig.tar.gz
 Patch1:		signon-8.57-no_static.patch
-Patch3:		signon-8.57-fix-qt5-build.patch
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-qttools
 BuildRequires:  qt5-qttools-qtdbus
@@ -138,12 +137,12 @@ BuildArch:	noarch
 Documentation for %{name}.
 
 %prep
-%setup -q
+%setup -qn %{name}-%{version}+%{date}
 %apply_patches
 sed -i 's/qdbusxml2cpp/qdbusxml2cpp-qt5/' src/signond/signond.pro
 
 %build
-%qmake_qt5
+%qmake_qt5 CONFIG+=debug_and_release
 %make
 
 %install
