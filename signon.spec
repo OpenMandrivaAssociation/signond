@@ -142,7 +142,7 @@ Documentation for %{name}.
 sed -i 's/qdbusxml2cpp/qdbusxml2cpp-qt5/' src/signond/signond.pro
 
 %build
-%qmake_qt5 CONFIG+=debug_and_release
+%qmake_qt5 CONFIG+=debug_and_release LIBDIR=%{_libdir}
 %make
 
 %install
