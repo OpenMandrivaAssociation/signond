@@ -11,7 +11,7 @@
 
 Name:		signon
 Version:	8.58
-Release:	2
+Release:	3
 Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 License:	LGPLv2
@@ -28,6 +28,7 @@ BuildRequires:  qt5-linguist-tools
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:	qtchooser
 BuildRequires:	doxygen
+BuildRequires:	graphviz
 %rename	%{name}d
 Requires:	dbus
 
