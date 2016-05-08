@@ -11,7 +11,7 @@
 
 Name:		signon
 Version:	8.58
-Release:	1
+Release:	2
 Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 License:	LGPLv2
@@ -28,6 +28,8 @@ BuildRequires:  qt5-linguist-tools
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:	qtchooser
 BuildRequires:	doxygen
+%rename	%{name}d
+Requires:	dbus
 
 %description
 Single Sign-On is a framework for centrally storing authentication credentials
@@ -109,17 +111,6 @@ Requires:	%{libqt} = %{version}-%{release}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%package -n %{name}d
-Summary:	A framework for centrally storing authentication credentials
-Group:		System/Libraries
-
-%description -n %{name}d
-Single Sign-On is a framework for centrally storing authentication credentials
-and handling authentication on behalf of applications as requested by
-applications. It consists of a secure storage of login credentials (for example
-usernames and passwords), plugins for different authentication systems and a
-client library for applications to communicate with this system.
-
 %package -n	%{develd}
 Summary:	Development files for %{name}
 Group:		Development/C
@@ -139,6 +130,7 @@ Documentation for %{name}.
 %prep
 %setup -qn %{name}-%{version}+%{date}
 %apply_patches
+
 sed -i 's/qdbusxml2cpp/qdbusxml2cpp-qt5/' src/signond/signond.pro
 
 %build
@@ -151,9 +143,11 @@ sed -i 's/qdbusxml2cpp/qdbusxml2cpp-qt5/' src/signond/signond.pro
 %files
 %{_sysconfdir}/signond.conf
 %{_bindir}/signonpluginprocess
+%{_bindir}/signond
 %dir %{_libdir}/signon
 %{_libdir}/signon/*.so
 %{_datadir}/dbus-1/services/*.service
+%{_datadir}/dbus-1/interfaces/*.xml
 
 %files -n %{libextension}
 %{_libdir}/libsignon-extension.so.%{major}
@@ -189,10 +183,6 @@ sed -i 's/qdbusxml2cpp/qdbusxml2cpp-qt5/' src/signond/signond.pro
 %{_includedir}/signon-qt5
 #% {qt4dir}/mkspecs/features/*.prf
 %{_libdir}/cmake/SignOnQt5
-
-%files -n %{name}d
-%{_bindir}/signond
-%{_datadir}/dbus-1/interfaces/*.xml
 
 %files -n %{develd}
 %{_libdir}/pkgconfig/signond.pc
