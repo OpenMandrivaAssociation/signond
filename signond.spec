@@ -7,15 +7,18 @@
 %define develplugins %mklibname -d signon-plugins-common
 %define develqt %mklibname -d signon-qt
 %define develd %mklibname -d signond
+# signond doesn't seem to make releases anymore
+%define snapshot 20170810
 
 Name:		signond
-Version:	8.59
-Release:	1
+Version:	8.60
+Release:	0.%{snapshot}.1
 Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 License:	LGPLv2
 URL:		http://gitlab.com/accounts-sso/
-Source0:	https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{version}.tar.xz
+# https://gitlab.com/accounts-sso/signond.git
+Source0:	signond-%{version}-%{snapshot}.tar.xz
 Patch1:		signon-8.57-no_static.patch
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-qttools
@@ -30,6 +33,7 @@ BuildRequires:	doxygen
 BuildRequires:	graphviz
 %rename	%{name}
 Requires:	dbus
+Suggests:	signon-ui
 
 %description
 Single Sign-On is a framework for centrally storing authentication credentials
@@ -128,7 +132,7 @@ BuildArch:	noarch
 Documentation for %{name}.
 
 %prep
-%setup -qn %{name}-%{version}+%{date}
+%setup -qn %{name}-%{version}
 %apply_patches
 
 sed -i 's/qdbusxml2cpp/qdbusxml2cpp-qt5/' src/signond/signond.pro
