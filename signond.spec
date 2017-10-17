@@ -12,7 +12,7 @@
 
 Name:		signond
 Version:	8.60
-Release:	0.%{snapshot}.1
+Release:	0.%{snapshot}.2
 Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 License:	LGPLv2
@@ -31,7 +31,7 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:	qtchooser
 BuildRequires:	doxygen
 BuildRequires:	graphviz
-%rename	%{name}
+%rename	signon
 Requires:	dbus
 Suggests:	signon-ui
 
