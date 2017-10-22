@@ -12,7 +12,7 @@
 
 Name:		signond
 Version:	8.60
-Release:	0.%{snapshot}.2
+Release:	0.%{snapshot}.3
 Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 License:	LGPLv2
@@ -118,7 +118,7 @@ developing applications that use %{name}.
 %package -n	%{develd}
 Summary:	Development files for %{name}
 Group:		Development/C
-Requires:	%{name}d = %{version}
+Requires:	%{name} = %{EVRD}
 
 %description -n %{develd}
 The %{name}-devel package contains libraries and header files for
