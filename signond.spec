@@ -8,11 +8,11 @@
 %define develqt %mklibname -d signon-qt
 %define develd %mklibname -d signond
 # signond doesn't seem to make releases anymore
-%define snapshot 20170810
+%define snapshot 20180624
 
 Name:		signond
 Version:	8.60
-Release:	0.%{snapshot}.3
+Release:	0.%{snapshot}.1
 Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 License:	LGPLv2
