@@ -133,7 +133,7 @@ Documentation for %{name}.
 
 %prep
 %setup -qn %{name}-%{version}
-%apply_patches
+%autopatch -p1
 
 sed -i 's/qdbusxml2cpp/qdbusxml2cpp-qt5/' src/signond/signond.pro
 
