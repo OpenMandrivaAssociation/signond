@@ -29,6 +29,7 @@ BuildRequires:	qt5-designer
 BuildRequires:	qt5-linguist
 BuildRequires:	qt5-linguist-tools
 BuildRequires:	cmake(Qt5Test)
+BuildRequires:	cmake(Qt5DBus)
 BuildRequires:	qtchooser
 BuildRequires:	doxygen
 BuildRequires:	graphviz
@@ -152,7 +153,6 @@ sed -i 's/qdbusxml2cpp/qdbusxml2cpp-qt5/' src/signond/signond.pro
 %dir %{_libdir}/signon
 %{_libdir}/signon/*.so
 %{_datadir}/dbus-1/services/*.service
-%{_datadir}/dbus-1/interfaces/*.xml
 
 %files -n %{libextension}
 %{_libdir}/libsignon-extension.so.%{major}
