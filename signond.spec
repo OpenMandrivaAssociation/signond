@@ -8,7 +8,7 @@
 %define develqt %mklibname -d signon-qt
 %define develd %mklibname -d signond
 # signond doesn't seem to make releases anymore
-%define snapshot 20180624
+%define snapshot 20200616
 
 Name:		signond
 Version:	8.60
@@ -17,17 +17,18 @@ Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 License:	LGPLv2
 URL:		http://gitlab.com/accounts-sso/
-# https://gitlab.com/accounts-sso/signond.git
+# git clone https://gitlab.com/accounts-sso/signond.git
+# git archive --format=tar --prefix signond-8.60/ HEAD | xz -9 > signond-8.60-$(date +%Y%m%d).tar.xz
 Source0:	signond-%{version}-%{snapshot}.tar.xz
 Patch1:		signon-8.57-no_static.patch
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-qttools
-BuildRequires:  qt5-qttools-qtdbus
-BuildRequires:  qt5-assistant
-BuildRequires:  qt5-designer
-BuildRequires:  qt5-linguist
-BuildRequires:  qt5-linguist-tools
-BuildRequires:  cmake(Qt5Test)
+BuildRequires:	qt5-qttools-qtdbus
+BuildRequires:	qt5-assistant
+BuildRequires:	qt5-designer
+BuildRequires:	qt5-linguist
+BuildRequires:	qt5-linguist-tools
+BuildRequires:	cmake(Qt5Test)
 BuildRequires:	qtchooser
 BuildRequires:	doxygen
 BuildRequires:	graphviz
@@ -42,7 +43,7 @@ applications. It consists of a secure storage of login credentials (for example
 usernames and passwords), plugins for different authentication systems and a
 client library for applications to communicate with this system.
 
-%package -n	%{libextension}
+%package -n %{libextension}
 Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 
@@ -106,7 +107,7 @@ Obsoletes:	%{mklibname -d signon-plugins-commo}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%package -n	%{develqt}
+%package -n %{develqt}
 Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libqt} = %{version}-%{release}
@@ -115,7 +116,7 @@ Requires:	%{libqt} = %{version}-%{release}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%package -n	%{develd}
+%package -n %{develd}
 Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{name} = %{EVRD}
@@ -124,7 +125,7 @@ Requires:	%{name} = %{EVRD}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%package	doc
+%package doc
 Summary:	Documentation for %{name}
 BuildArch:	noarch
 
@@ -139,10 +140,10 @@ sed -i 's/qdbusxml2cpp/qdbusxml2cpp-qt5/' src/signond/signond.pro
 
 %build
 %qmake_qt5 CONFIG+=debug_and_release LIBDIR=%{_libdir}
-%make
+%make_build
 
 %install
-%makeinstall_std INSTALL_ROOT=%{buildroot}
+%make_install INSTALL_ROOT=%{buildroot}
 
 %files
 %{_sysconfdir}/signond.conf
