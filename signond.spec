@@ -12,7 +12,7 @@
 
 Name:		signond
 Version:	8.60
-Release:	0.%{snapshot}.1
+Release:	0.%{snapshot}.2
 Group:		System/Libraries
 Summary:	A framework for centrally storing authentication credentials
 License:	LGPLv2
@@ -21,6 +21,8 @@ URL:		http://gitlab.com/accounts-sso/
 # git archive --format=tar --prefix signond-8.60/ HEAD | xz -9 > signond-8.60-$(date +%Y%m%d).tar.xz
 Source0:	signond-%{version}-%{snapshot}.tar.xz
 Patch1:		signon-8.57-no_static.patch
+# (tpg) fix crash fit Qt-5.15.x
+Patch2:   0001-Don-t-use-fno-rtti.patch
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-qttools
 BuildRequires:	qt5-qttools-qtdbus
