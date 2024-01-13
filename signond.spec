@@ -51,6 +51,7 @@ BuildRequires:	cmake(Qt6Gui)
 BuildRequires:	cmake(Qt6DBus)
 BuildRequires:	cmake(Qt6Network)
 BuildRequires:	cmake(Qt6Sql)
+BuildRequires:	cmake(Qt6Test)
 BuildRequires:	cmake(Qt6Xml)
 BuildRequires:	qmake-qt6
 
