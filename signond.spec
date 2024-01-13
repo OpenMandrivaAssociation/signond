@@ -40,11 +40,17 @@ BuildRequires:	qt5-linguist
 BuildRequires:	qt5-linguist-tools
 BuildRequires:	cmake(Qt5Test)
 BuildRequires:	cmake(Qt5DBus)
+BuildRequires:	cmake(Qt5Network)
+BuildRequires:	cmake(Qt5Sql)
+BuildRequires:	cmake(Qt5Xml)
 BuildRequires:	qtchooser
 
 BuildRequires:	cmake(Qt6)
 BuildRequires:	cmake(Qt6Core)
 BuildRequires:	cmake(Qt6DBus)
+BuildRequires:	cmake(Qt6Network)
+BuildRequires:	cmake(Qt6Sql)
+BuildRequires:	cmake(Qt6Xml)
 BuildRequires:	qmake-qt6
 
 BuildRequires:	doxygen
